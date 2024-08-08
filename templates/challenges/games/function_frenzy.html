@@ -36,7 +36,7 @@
             background-color: #007bff;
             border-color: #007bff;
             width: 100%;
-            margin-top: auto; /* Align button at the bottom of the card */
+            margin-top: auto;
         }
         .btn-primary:hover {
             background-color: #0056b3;
@@ -85,7 +85,39 @@
         .tips-section a:hover {
             text-decoration: underline;
         }
+        .editor-section {
+            margin-top: 2rem;
+        }
+        .editor-container {
+            height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+        }
+        .ace_editor {
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .ace_gutter {
+            background: #e9ecef;
+            color: #333;
+        }
+        .ace_print-margin {
+            width: 1px;
+            background: #e9ecef;
+        }
+        .ace_scroller {
+            background-color: #fff;
+        }
+        .ace_cursor {
+            color: #007bff;
+        }
     </style>
+    <!-- Include Ace Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -104,6 +136,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/challenges">Challenges</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/challenges/function_frenzy">Function Frenzy</a>
                 </li>
             </ul>
         </div>
@@ -156,8 +191,16 @@
             </div>
         </section>
 
+        <!-- Code Editor Section -->
+        <section class="editor-section">
+            <h2 class="text-center">Try Coding Here</h2>
+            <div class="editor-container" id="code-editor"># Write your Python code here...</div>
+            <button class="btn btn-primary mt-3" onclick="runCode()">Run Code</button>
+            <pre id="output" class="mt-3"></pre>
+        </section>
+
         <!-- Leaderboards Section -->
-        <section class="mb-5">
+        <!-- <section class="mb-5">
             <div class="leaderboard text-center">
                 <h3>Top Performers</h3>
                 <p>Check out the top performers for Function Frenzy challenges. Compete to see your name on this list!</p>
@@ -169,32 +212,51 @@
                     <li class="list-group-item">5. Eve - 950 Points</li>
                 </ul>
             </div>
-        </section>
+        </section> -->
 
         <!-- Tips & Resources Section -->
         <section class="mb-5">
             <div class="tips-section">
                 <h3>Tips & Resources</h3>
-                <p>Here are some tips and resources to help you with functions:</p>
+                <p>Here are some tips and resources to help you solve the challenges:</p>
                 <ul>
-                    <li><a href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions" target="_blank">Python Official Documentation: Functions</a></li>
-                    <li><a href="https://realpython.com/defining-your-own-python-function/" target="_blank">Real Python: Defining Your Own Python Function</a></li>
-                    <li><a href="https://www.geeksforgeeks.org/python-functions/" target="_blank">GeeksforGeeks: Python Functions</a></li>
+                    <li>Review the <a href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions" target="_blank">official Python documentation on functions</a>.</li>
+                    <li>Check out tutorials on <a href="https://www.geeksforgeeks.org/python-functions/" target="_blank">GeeksforGeeks: Python Functions</a>.</li>
                 </ul>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="text-center py-4 footer">
+    <footer class="footer text-center py-4">
         <div class="container">
             <p>&copy; 2024 CodeQuest. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for Code Editor and Execution -->
+    <script>
+        // Initialize Ace Editor
+        const editor = ace.edit("code-editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/python");
+        
+        function runCode() {
+            const code = editor.getValue();
+            // Placeholder for running code - in real scenario, send code to server for execution
+            try {
+                // This is just a mockup. In practice, execute the code on a server.
+                const result = eval(code); // Warning: Using eval is dangerous. Do not use in production.
+                document.getElementById("output").innerText = result;
+            } catch (e) {
+                document.getElementById("output").innerText = e.message;
+            }
+        }
+    </script>
 </body>
 </html>

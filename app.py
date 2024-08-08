@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 import subprocess
 import os
+import logging
 
 app = Flask(__name__)
-app.secret_key = 'supersecretkey'
+app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')
+
+# Configure logging
+logging.basicConfig(filename='app.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 @app.route('/')
 def home():
@@ -47,7 +51,7 @@ def data_structures():
 
 @app.route('/challenges/beginner')
 def beginner_challenges():
-    return render_template('challenges/begineer-level.html')
+    return render_template('challenges/beginner-level.html')
 
 @app.route('/challenges/intermediate')
 def intermediate_challenges():
@@ -59,15 +63,15 @@ def advanced_challenges():
 
 @app.route('/challenges/beginner/hello-world')
 def hello_world_challenge():
-    return render_template('challenges/begineer/hello_world.html')
+    return render_template('challenges/beginner/hello_world.html')
 
 @app.route('/challenges/beginner/calculator')
 def calculator_challenge():
-    return render_template('challenges/begineer/calculator.html')
+    return render_template('challenges/beginner/calculator.html')
 
 @app.route('/challenges/beginner/fizzbuzz')
 def fizzbuzz_challenge():
-    return render_template('challenges/begineer/fizzbuzz.html')
+    return render_template('challenges/beginner/fizzbuzz.html')
 
 @app.route('/challenges/intermediate/data-structures')
 def data_structures_challenge():
@@ -102,21 +106,24 @@ def submit_solution():
     code = request.form['code']
     
     # Write the code to a temporary Python file
-    with open('temp_code.py', 'w') as file:
+    file_path = 'temp_code.py'
+    with open(file_path, 'w') as file:
         file.write(code)
     
     try:
         # Run the code using subprocess and capture the output
-        result = subprocess.run(['python', 'temp_code.py'], capture_output=True, text=True, timeout=5)
+        result = subprocess.run(['python', file_path], capture_output=True, text=True, timeout=5)
         output = result.stdout + result.stderr
-        os.remove('temp_code.py')  # Clean up the temporary file after execution
         return jsonify({'status': 'success', 'output': output})
     except subprocess.TimeoutExpired:
-        os.remove('temp_code.py')  # Clean up the temporary file on timeout
+        logging.error('Code execution timed out.')
         return jsonify({'status': 'error', 'message': 'Code execution timed out.'})
     except Exception as e:
-        os.remove('temp_code.py')  # Clean up the temporary file on any error
+        logging.error(f'Error during code execution: {str(e)}')
         return jsonify({'status': 'error', 'message': str(e)})
+    finally:
+        if os.path.exists(file_path):
+            os.remove(file_path)  # Clean up the temporary file after execution
 
 if __name__ == '__main__':
     app.run(debug=True)

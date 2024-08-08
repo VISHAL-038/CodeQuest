@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest for Loops - CodeQuest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -79,11 +80,18 @@
             min-height: 100px;
             white-space: pre-wrap;
         }
+        .footer {
+            margin-top: 5rem;
+        }
+        .code-section textarea:focus, .output:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0,123,255,0.5);
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Main Navigation">
         <a class="navbar-brand" href="/">CodeQuest</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -97,10 +105,10 @@
                     <a class="nav-link" href="/tutorials">Tutorials</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/challenges">Challenges</a>
+                    <a class="nav-link " href="/challenges">Challenges</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/quest_for_loop">For loop</a>
+                    <a class="nav-link active" href="/challenges/quest_for_loop">For Loop</a>
                 </li>
             </ul>
         </div>
@@ -205,7 +213,7 @@
                     <div class="card text-center">
                         <div class="card-body">
                             <h3 class="card-title">Example Challenge 2</h3>
-                            <p class="card-text">Create a loop that sums all even numbers up to 100.</p>
+                            <p class="card-text">Use nested loops to create a multiplication table.</p>
                         </div>
                     </div>
                 </div>
@@ -213,30 +221,20 @@
                     <div class="card text-center">
                         <div class="card-body">
                             <h3 class="card-title">Example Challenge 3</h3>
-                            <p class="card-text">Write a nested loop to generate a multiplication table.</p>
+                            <p class="card-text">Implement a loop to find the factorial of a number.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Code Writer and Output Viewer Section -->
-        <section class="mb-5">
-            <h2 class="text-center">Code Writer and Output Viewer</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="code-section">
-                        <h3 class="text-center">Write Your Code</h3>
-                        <textarea id="codeEditor" class="code-editor" placeholder="Write your Python code here..."></textarea>
-                        <button id="runCode" class="btn btn-primary w-100">Run Code</button>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="code-section">
-                        <h3 class="text-center">Output</h3>
-                        <pre id="output" class="output"></pre>
-                    </div>
-                </div>
+        <!-- Code Editor and Output Section -->
+        <section>
+            <h2 class="text-center">Code Editor</h2>
+            <div class="code-section">
+                <textarea id="codeEditor" class="code-editor" placeholder="Write your Python code here..."></textarea>
+                <button id="runCode" class="btn btn-primary">Run Code</button>
+                <div id="output" class="output" aria-live="polite"></div>
             </div>
         </section>
 
@@ -272,7 +270,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer text-center py-3">
+    <footer class="footer text-center py-4">
         <div class="container">
             <p>&copy; 2024 CodeQuest. All rights reserved.</p>
         </div>
@@ -280,25 +278,18 @@
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        document.getElementById('runCode').addEventListener('click', function() {
+        document.getElementById('runCode').addEventListener('click', () => {
             const code = document.getElementById('codeEditor').value;
-            fetch('/execute_code', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ code: code })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('output').textContent = data.output;
-            })
-            .catch(error => {
-                document.getElementById('output').textContent = 'Error executing code: ' + error;
-            });
+            try {
+                // Simulate code execution (replace with real execution logic in a real app)
+                const result = eval(code); // Use caution with eval - ensure proper sanitization
+                document.getElementById('output').textContent = result;
+            } catch (error) {
+                document.getElementById('output').textContent = 'Error: ' + error.message;
+            }
         });
     </script>
 </body>
