@@ -1,0 +1,343 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f9;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #1e2a38;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #3498db;
+}
+
+nav ul li a.active {
+    color: #fff;
+    background-color: #3498db;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background: #e74c3c;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #c0392b;
+}
+
+/* Main Content */
+main {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.overview, .how-it-works, .key-features, .team, .cta {
+    margin-bottom: 60px;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: #3498db;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+/* Overview Section */
+.overview p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* How It Works Section */
+.how-it-works .step {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.how-it-works h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.how-it-works p {
+    font-size: 1.1em;
+}
+
+/* Key Features Section */
+.key-features ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.key-features li {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.1em;
+}
+
+/* Team Section */
+.team {
+    display: flex;
+    justify-content: space-between;
+    margin-right: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-member {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-member img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+    width: 150px;
+    height: 150px;
+}
+
+.team-member h3 {
+    font-size: 1.5em;
+    margin: 10px 0 5px;
+}
+
+.team-member p {
+    font-size: 1.2em;
+    color: #555;
+    margin: 0;
+}
+
+/* CTA Section */
+.cta {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 60px 0;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #ddd;
+}
+
+.cta p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.cta-button {
+    background: #e74c3c;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    /* background: #1e2a38; */
+    color: #ecf0f1;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    background: grey
+}
+
+
+/* Tutorials Page */
+.tutorials-overview {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tutorial-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.category {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.category p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.tutorials-progress {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Challenges Page */
+.challenges-overview {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.challenge-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.category {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.category p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.leaderboards {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+

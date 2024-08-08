@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermediate Challenges - CodeQuest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.25rem;
+        }
+        .card-text {
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        @media (max-width: 767.98px) {
+            .card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">CodeQuest</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tutorials">Tutorials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/challenges">Challenges</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/challenges/intermediate">Intermediate Challenges</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="jumbotron jumbotron-fluid text-center bg-warning text-white">
+        <div class="container">
+            <h1 class="display-4">Intermediate Coding Challenges</h1>
+            <p class="lead">Take on more complex challenges that test your programming skills. Solve these problems to advance your coding expertise!</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Challenge Overview Section -->
+        <section class="mb-5">
+            <h2 class="text-center">Intermediate Challenges</h2>
+            <p class="text-center">These challenges are designed to push your skills further. Choose a challenge and start coding!</p>
+        </section>
+
+        <!-- Challenge List Section -->
+        <section class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Challenge 1: Sorting Algorithms</h3>
+                        <p class="card-text">Implement common sorting algorithms such as quicksort or mergesort and test their efficiency.</p>
+                        <a href="/challenges/intermediate/sorting-algorithms" class="btn btn-primary">Start Challenge</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Challenge 2: Data Structures</h3>
+                        <p class="card-text">Work with complex data structures like trees or graphs and solve problems that involve them.</p>
+                        <a href="/challenges/intermediate/data-structures" class="btn btn-primary">Start Challenge</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Return to Challenges Overview -->
+        <section class="text-center mt-5">
+            <a href="/challenges" class="btn btn-secondary">Back to Challenges Overview</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-dark text-white">
+        <div class="container">
+            <p>&copy; 2024 CodeQuest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
